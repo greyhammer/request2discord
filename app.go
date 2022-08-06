@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -15,33 +18,40 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	// url := "https://discordapp.com/api/webhooks/1005315978202198137/6uKnusikcv7__bDSp2BN0O8hosATuI7kYNlm1g4obKqqnkPQnM-grLPkRkVQlUNspQKb"
+	url := "https://discordapp.com/api/webhooks/1005315978202198137/6uKnusikcv7__bDSp2BN0O8hosATuI7kYNlm1g4obKqqnkPQnM-grLPkRkVQlUNspQKb"
 
-	// message := `{"username": "test", "content": "` + string(reqDump) + `"}`
-	// // + string(reqDump) +
+	message := `{"username": "test", "content": "` + jsonEscape(string(reqDump)) + `"}`
+	fmt.Println("message: ", message)
+	// + string(reqDump) +jsonEscape(string(reqDump))
 
-	// var jsonStr = []byte(string(message))
-	// req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
-	// req.Header.Set("X-Custom-Header", "myvalue")
-	// req.Header.Set("Content-Type", "application/json")
+	var jsonStr = []byte(string(message))
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
+	req.Header.Set("X-Custom-Header", "myvalue")
+	req.Header.Set("Content-Type", "application/json")
 
-	// client := &http.Client{}
-	// resp, err := client.Do(req)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// defer resp.Body.Close()
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
 
-	//
-	// fmt.Println("response Status:", resp.Status)
-	// fmt.Println("response Headers:", resp.Header)
-	// body, _ := ioutil.ReadAll(resp.Body)
-	// fmt.Println("response Body:", string(body))
-
-	fmt.Println("raw req dump:", string(reqDump))
+	fmt.Println("response Status:", resp.Status)
+	fmt.Println("response Headers:", resp.Header)
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println("response Body:", string(body))
 
 	fmt.Printf("REQUEST:\n%s", string(reqDump))
 	w.Write([]byte("Hello World\n"))
+}
+
+func jsonEscape(i string) string {
+	b, err := json.Marshal(i)
+	if err != nil {
+		panic(err)
+	}
+	s := string(b)
+	return s[1 : len(s)-1]
 }
 
 func main() {
