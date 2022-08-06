@@ -16,6 +16,9 @@ Please use a feature branch and then open a MR/PR with any changes you wanna mak
 
 ### Todo 
 * Make discord url and bot name docker env vars
+* Add versioning and tags to docker image.
+* Update readme with build status
+* Verify main branch is protected
 * Tests ? 
 * Better request dump data, different module or something
 * Better formatting of discord message
