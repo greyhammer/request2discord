@@ -1,5 +1,7 @@
 # request2discord
 
+![Build Status](https://github.com/greyhammer/request2discord/actions/workflows/dockerimage.yml/badge.svg)
+
 ## Background 
 request2discord is a simple go app, that runs a simple webserver on port 8080 and upon receiving any type of request, then dumps that request data to a discord webhook. 
 
@@ -16,8 +18,7 @@ Please use a feature branch and then open a MR/PR with any changes you wanna mak
 
 ### Todo 
 * Make discord url and bot name docker env vars
-* Add versioning and tags to docker image.
-* Update readme with build status
+* Add versioning and tags to docker image
 * Verify main branch is protected
 * Tests ? 
 * Better request dump data, different module or something
