@@ -23,5 +23,5 @@ Please use a feature branch and then open a MR/PR with any changes you wanna mak
 * Tests ? 
 * Better request dump data, different module or something
 * Better formatting of discord message
-
+* Add option for saving to db ? 
 
