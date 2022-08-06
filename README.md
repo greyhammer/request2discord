@@ -9,7 +9,7 @@ This project was created when moving services to a new server or hosting provide
 
 
 ## Usage
-Simple docker run: `docker run -d -p 8080:8080 kjjanak/request2discord`
+Simple docker run: `docker run -d -p 8080:8080 greyhammer/request2discord`
 
 ## Contributing Guide
 Contributions Welcome
