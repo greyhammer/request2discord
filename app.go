@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"net/http/httputil"
+	"os"
 )
 
 const port = 8080
@@ -18,9 +19,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	url := "https://discordapp.com/api/webhooks/1005315978202198137/6uKnusikcv7__bDSp2BN0O8hosATuI7kYNlm1g4obKqqnkPQnM-grLPkRkVQlUNspQKb"
+	url := os.Getenv("DISCORD_WEBHOOK_URL")
+	botname := os.Getenv("DISCORD_WEBHOOK_BOTNAME")
 
-	message := `{"username": "test", "content": "` + jsonEscape(string(reqDump)) + `"}`
+	message := `{"username": "` + botname + `", "content": "` + jsonEscape(string(reqDump)) + `"}`
 	fmt.Println("message: ", message)
 	// + string(reqDump) +jsonEscape(string(reqDump))
 

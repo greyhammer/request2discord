@@ -9,7 +9,10 @@ This project was created when moving services to a new server or hosting provide
 
 
 ## Usage
-Simple docker run: `docker run -d -p 8080:8080 greyhammer/request2discord`
+
+Create a Discord Webhook - ![Instructions](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+
+Simple docker run: `docker run -d -e DISCORD_WEBHOOK_URL=<insert webhook url> -e DISCORD_WEBHOOK_BOTNAME=<name for messages to appear from> -p 8080:8080 greyhammer/request2discord`
 
 ## Contributing Guide
 Contributions Welcome
@@ -17,7 +20,6 @@ Contributions Welcome
 Please use a feature branch and then open a MR/PR with any changes you wanna make. 
 
 ### Todo 
-* Make discord url and bot name docker env vars
 * Add versioning and tags to docker image
 * Verify main branch is protected
 * Tests ? 
