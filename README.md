@@ -12,7 +12,7 @@ This project was created when moving services to a new server or hosting provide
 
 Create a Discord Webhook - ![Instructions](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 
-Simple docker run: `docker run -d -e DISCORD_WEBHOOK_URL=<insert webhook url> -e DISCORD_WEBHOOK_BOTNAME=<name for messages to appear from> -p 8080:8080 greyhammer/request2discord`
+Simple docker run: `docker run -d -e DISCORD_WEBHOOK_URL=<webhook url> -e DISCORD_WEBHOOK_BOTNAME=<name for messages to appear from> -p 8080:8080 greyhammer/request2discord`
 
 ## Contributing Guide
 Contributions Welcome
